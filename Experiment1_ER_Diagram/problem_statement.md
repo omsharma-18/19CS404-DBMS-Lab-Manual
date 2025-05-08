@@ -51,22 +51,45 @@ Design a database for patient management, appointments, medical records, and bil
 University / Hospital (choose one)
 
 ## ER Diagram:
-![ER Diagram](er_diagram.png)
+![ER Diagram](https://github.com/user-attachments/assets/b1d55303-fef8-435f-822f-ad437942b10e)
+
 
 ## Entities and Attributes:
-- Entity1: Attributes
-- Entity2: Attributes
-...
+- Academic Programs:Identifier,Name,Governing Departments
+- Instructors:Staff Number,Name,Contact
+- Departments:Department ID,Department Name
+- Catalog of Courses:Number,Name,Number of Credits
+- Students:Admission Number,Name,Contact,Date of Birth
 
 ## Relationships and Constraints:
-- Relationship1 (Cardinality, Participation)
-- Relationship2 (Cardinality, Participation)
-...
+- Relationship 1: Teaching(Cardinality: Many-to-Many,Participation: Partial–Partial)
+- Relationship 2: Offered(Cardinality: Many-to-Many,Participation: Total–Partial)
+- Relationship 3: Offers(Cardinality: One-to-Many,Participation: Total–Partial)
+- Relationship 4: Register(Cardinality: Many-to-Many,Participation: Partial–Partial)
+- Relationship 5: Enrolled(Cardinality: Many-to-One,Participation: Total–Partial)
 
 ## Extension (Prerequisite / Billing):
-- Explain how you modeled prerequisites or billing.
+- To model prerequisites:
+     - Add a relationship called "Prerequisite" between the same course entity (Catalog of Courses → Catalog of Courses).
+     - This shows that one course depends on another.
+- To model billing:
+     - Add a new entity called "Billing" with attributes like Amount and Due Date.
+     - Connect it to Students using a relationship like "Pays".
+     - This shows that students receive bills and make payments.
+
 
 ## Design Choices:
-Brief explanation of why you chose certain entities, relationships, and assumptions
+- Entities like Students, Instructors, Programs, Courses, and Departments were chosen because they are the main parts of a university system.
+- Relationships were added to show how these parts connect:
+  - Students enroll in programs and register for courses.
+  - Programs offer courses.
+  - Instructors teach programs.
+  - Departments offer programs.
+- Assumptions:
+  - A student can take many courses and belong to one or more programs.
+  - A course can be part of different programs.
+  - Not all instructors teach all the time.
+  - Every entity has a unique ID to identify it.
 
 ## RESULT
+   This the ER diagram for the University Problem.
